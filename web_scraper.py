@@ -32,7 +32,7 @@ table = ''
 move_nom_data = []
 move_name_data = []
 character_movelist = {}
-character_framedata = []
+character_framedata = {}
 
 
 
@@ -67,7 +67,7 @@ async def character_scrape():
         if html_text:
             soup = BeautifulSoup(html_text, 'lxml')
             move_names = soup.find_all('div', class_='movedata-flex-framedata-name')
-            table = soup.find_all('table', attrs={'class':'wikitable citizen-table-nowrap'})
+            table_attributes = soup.find_all('td', attrs={'style':'text-align:center;'})
 
 #Organizamoslos nombres de cada movimientos organizados junto a su respecitva nomeclatura
             if move_names:
@@ -81,18 +81,31 @@ async def character_scrape():
                     move_name_data.extend(moves_full_name)
                 for key, value in zip(move_nom_data, move_name_data):
                          character_movelist[key] = value
-                         
+                       
                 print(f'The character has {len(move_nom_data)} moves:')
+                print(character_movelist)
+                
                 
 #Recolectar y organizar framedata de cada movimiento
-            if table:
-                for row in table.find('tr'):
-                    row_data = [td.get_text(strip=True) for td in row.find_all('td')]
-                print(row_data)
-            else:
-                print('Table not found')
 
+    if table_attributes:
+        group_size = 8
+        framedata_attributes = []
+        for i, move_attributes in enumerate(table_attributes):
+            if i % group_size == 0:
+            # Start a new group of moves
+                current_group = []
 
+            # Extract the text from the td element and append it to the current group
+            current_group.append(move_attributes.get_text(strip=True))
+
+            if (i + 1) % group_size == 0 or i == len(table_attributes) - 1:
+            # If we've collected 8 attributes or it's the last one, add the current_group to the list
+                framedata_attributes.append(current_group)
+
+        print(framedata_attributes)
+    else:
+        print('Table not found')
 
 async def fetch_character_data(character_name):
     url = f'https://wiki.supercombo.gg/w/Street_Fighter_6/{character_name}'
@@ -102,6 +115,7 @@ async def fetch_character_data(character_name):
     else:
         print(f"Failed to fetch data for {character_name}")
         return None
+
 
 asyncio.run(character_scrape())
 
