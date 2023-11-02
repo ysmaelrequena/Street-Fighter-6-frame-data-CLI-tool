@@ -127,16 +127,16 @@ async def organize_character_framedata():
         movelist.append(character_movelist[key])
     for name, frames in zip(movelist, framedata_attributes):
         character_framedata[name] = {}
-        for i in range(8):
+        for i in range(0, 8):
             sub_key = f'{phase[i]}'
             sub_value = f'{frames[i]}'
             character_framedata[name][sub_key] = sub_value
-    
+    #print(character_framedata)
 
-
-
-        
-        
+    for key, sub_dict in character_framedata.items():
+        for sub_key, sub_value in sub_dict.items():
+            print(f'''{key}: {sub_key}: {sub_value}
+''')
 
 asyncio.run(character_scrape())
 
