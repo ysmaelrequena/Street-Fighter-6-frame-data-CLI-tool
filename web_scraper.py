@@ -31,6 +31,7 @@ move_names = ''
 table = ''
 move_nom_data = []
 move_name_data = []
+framedata_attributes = []
 character_movelist = {}
 character_framedata = {}
 
@@ -83,14 +84,13 @@ async def character_scrape():
                          character_movelist[key] = value
                        
                 print(f'The character has {len(move_nom_data)} moves:')
-                print(character_movelist)
+                #print(character_movelist)
                 
                 
 #Recolectar y organizar framedata de cada movimiento
 
     if table_attributes:
         group_size = 8
-        framedata_attributes = []
         for i, move_attributes in enumerate(table_attributes):
             if i % group_size == 0:
             # Start a new group of moves
@@ -103,10 +103,14 @@ async def character_scrape():
             # If we've collected 8 attributes or it's the last one, add the current_group to the list
                 framedata_attributes.append(current_group)
 
-        print(framedata_attributes)
+        #print(framedata_attributes)
     else:
         print('Table not found')
 
+    
+    if character_movelist and framedata_attributes:
+        await organize_character_framedata()
+    
 async def fetch_character_data(character_name):
     url = f'https://wiki.supercombo.gg/w/Street_Fighter_6/{character_name}'
     response = requests.get(url)
@@ -116,6 +120,23 @@ async def fetch_character_data(character_name):
         print(f"Failed to fetch data for {character_name}")
         return None
 
+async def organize_character_framedata():
+    movelist = []
+    phase = ['Startup', 'Active', 'Recovery', 'Cancel', 'Damage', 'Guard', 'On Hit', 'On Block']
+    for key in character_movelist:
+        movelist.append(character_movelist[key])
+    for name, frames in zip(movelist, framedata_attributes):
+        character_framedata[name] = {}
+        for i in range(8):
+            sub_key = f'{phase[i]}'
+            sub_value = f'{frames[i]}'
+            character_framedata[name][sub_key] = sub_value
+    
+
+
+
+        
+        
 
 asyncio.run(character_scrape())
 
