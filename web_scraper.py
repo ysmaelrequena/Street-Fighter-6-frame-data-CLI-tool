@@ -103,29 +103,39 @@ character_framedata = {}
 
 
 async def character_scrape():
-    character_request = print(f"Which character's data do you want to see?>")
-    character_input = input().lower()
-    character = characters.get(character_input)
 
-    if character:
-        print(character)
-    elif character_input in ['a.k.i.', 'a k i']:
-        character = characters['aki']
-        print(character)
-    elif character_input in ['chun', 'chun-li', 'chun li']:
-        character = characters['chunli']
-        print(character)
-    elif character_input in ['dee jay', 'dee_jay']:
-        character = characters['deejay']
-        print(character)
-    elif character_input in ['e.honda', 'ehonda', 'e honda']:
-        character = characters['honda']
-        print(character)
-    elif character_input in ['j.p', 'j.p.']:
-        character = characters['jp']
-        print(character)
-    else:
-        print('Character not found, please try again')
+    while True:
+        
+        print("Which character's data do you want to see?")
+        character_input = input().lower()
+        character = characters.get(character_input)
+
+        if character:
+            print(character)
+            break  # Exit the loop if a valid character is found
+        elif character_input in ['a.k.i.', 'a k i']:
+            character = characters['aki']
+            print(character)
+            break
+        elif character_input in ['chun', 'chun-li', 'chun li']:
+            character = characters['chunli']
+            print(character)
+            break
+        elif character_input in ['dee jay', 'dee_jay']:
+            character = characters['deejay']
+            print(character)
+            break
+        elif character_input in ['e.honda', 'ehonda', 'e honda']:
+            character = characters['honda']
+            print(character)
+            break
+        elif character_input in ['j.p', 'j.p.']:
+            character = characters['jp']
+            print(character)
+            break
+        else:
+            print('Character not found, please try again')
+
     
     if character: 
         html_text = await fetch_character_data(character)
