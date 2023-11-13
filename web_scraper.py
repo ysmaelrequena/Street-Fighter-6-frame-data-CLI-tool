@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import asyncio
+import json
 
 characters = {
     'aki': 'A.K.I',
@@ -91,17 +92,7 @@ taunt_frame_obj = {'Taunts': {}}
 
 group_size = 8
 
-framedata_attributes = []
-character_movelist = {}
 character_framedata = {}
-normals = []
-cmd_normals = []
-target_combos = []
-throws = []
-drive_system = []
-special_moves = []
-super_arts = []
-taunts = []
 
 
 
@@ -397,6 +388,7 @@ async def character_scrape():
                         if (i + 1) % group_size == 0 or i == len(find_special_data) - 1:
                             special_framedata.append(current_group)
                
+               
                 for first_key, second_key, value in zip(special_nom_data, special_name_data, special_framedata):
                     if first_key not in special_frame_obj['Special Moves']:
                         special_frame_obj['Special Moves'][first_key] = {}
@@ -407,7 +399,7 @@ async def character_scrape():
                         sub_phase = f'{phase[i]}'
                         sub_value = f'{value[i]}' 
                         special_frame_obj['Special Moves'][first_key][second_key][sub_phase] = sub_value  
-                print(special_frame_obj)          
+                         
           
             if supers:
                 super_divs = supers.find_all('div', class_='movedata-flex-framedata-name-item movedata-flex-framedata-name-item-middle')
@@ -492,7 +484,16 @@ async def character_scrape():
                         sub_phase = f'{phase[i]}'
                         sub_value = f'{value[i]}' 
                         taunt_frame_obj['Taunts'][first_key][second_key][sub_phase] = sub_value
-          
+
+            character_framedata.update(normal_frame_obj)
+            character_framedata.update(cmd_frame_obj)
+            character_framedata.update(tgt_frame_obj)
+            character_framedata.update(throw_frame_obj)
+            character_framedata.update(drive_frame_obj)
+            character_framedata.update(special_frame_obj)
+            character_framedata.update(super_frame_obj)
+            character_framedata.update(taunt_frame_obj)
+            print(json.dumps(character_framedata, indent=2))
     
 async def fetch_character_data(character_name):
     url = f'https://wiki.supercombo.gg/w/Street_Fighter_6/{character_name}'
