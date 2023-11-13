@@ -90,6 +90,12 @@ taunt_name_data = []
 taunt_framedata = []
 taunt_frame_obj = {'Taunts': {}}
 
+#section exclusive to Chun-Li, who has an unique stance
+serenity_nom_data = []
+serenity_name_data = []
+serenity_framedata = []
+serenity_frame_obj = {'Serenity Stream': {}}
+
 group_size = 8
 
 character_framedata = {}
@@ -134,7 +140,13 @@ async def character_scrape():
             specials = soup.find('section', attrs={'id':'section-collapsible-6'})
             supers = soup.find('section', attrs={'id':'section-collapsible-7'})
             taunts = soup.find('section', attrs={'id':'section-collapsible-8'})
-            table_attributes = soup.find_all('td', attrs={'style':'text-align:center;'})
+            
+            if character == characters['chunli']:
+                serenity_stream = soup.find('section', attrs={'id':'section-collapsible-4'}) 
+                throw_data = soup.find('section', attrs={'id':'section-collapsible-5'})
+
+            else:
+                pass
             
 #now let's organize the moves by type and store the names in variables
 
@@ -259,7 +271,7 @@ async def character_scrape():
 
                         if (i + 1) % group_size == 0 or i == len(find_tgt_data) - 1:
                             tgt_framedata.append(current_group)
-               
+
                 for first_key, second_key, value in zip(tgt_nom_data, tgt_name_data, tgt_framedata):
                     if first_key not in tgt_frame_obj['Target Combos']:
                         tgt_frame_obj['Target Combos'][first_key] = {}
@@ -270,8 +282,52 @@ async def character_scrape():
                         sub_phase = f'{phase[i]}'
                         sub_value = f'{value[i]}' 
                         tgt_frame_obj['Target Combos'][first_key][second_key][sub_phase] = sub_value
-            
-            
+
+            #In case the character chosen is Chun-Li, we create her stance's section
+            if character == characters['chunli']:
+                if serenity_stream:
+                    serenity_divs = serenity_stream.find_all('div', class_='movedata-flex-framedata-name-item movedata-flex-framedata-name-item-middle')
+    
+                    for serenity in serenity_divs:
+                        #get command normals nomenclature
+                        serenity_nom_div = serenity.find('div', attrs={'style':''})
+                        if serenity_nom_div:
+                            serenity_nom_data.append(serenity_nom_div.text.strip())
+                        #get command normals full names
+                        serenity_name_div = serenity.find('div', attrs={'style':"font-size:80%"})
+                        if serenity_name_div:
+                            serenity_name_data.append(serenity_name_div.text.strip())
+                    
+                    #get frame data of moves
+                    serenity_framedata_table = serenity_stream.find_all('div', class_='movedata-flex-framedata-table')
+                    
+                    for framedata in serenity_framedata_table:
+                        find_serenity_table = framedata.find('table', class_='wikitable citizen-table-nowrap')
+                        find_serenity_data = find_serenity_table.find_all('td', attrs={'style':'text-align:center;'})
+    
+                        for i, data in enumerate(find_serenity_data):
+                            
+                            if i % group_size == 0:
+                                current_group = []
+    
+                            current_group.append(data.text.replace('\n',''))
+    
+                            if (i + 1) % group_size == 0 or i == len(find_serenity_data) - 1:
+                                serenity_framedata.append(current_group)
+                
+                    for first_key, second_key, value in zip(serenity_nom_data, serenity_name_data, serenity_framedata):
+                        if first_key not in serenity_frame_obj['Serenity Stream']:
+                            serenity_frame_obj['Serenity Stream'][first_key] = {}
+                        if second_key not in serenity_frame_obj['Serenity Stream'][first_key]:
+                            serenity_frame_obj['Serenity Stream'][first_key][second_key] = {}
+    
+                        for i in range(8):
+                            sub_phase = f'{phase[i]}'
+                            sub_value = f'{value[i]}' 
+                            serenity_frame_obj['Serenity Stream'][first_key][second_key][sub_phase] = sub_value
+                else:
+                    pass
+
             #organize throw data
             if throw_data:
                 throw_divs = throw_data.find_all('div', class_='movedata-flex-framedata-name-item movedata-flex-framedata-name-item-middle')
@@ -493,7 +549,13 @@ async def character_scrape():
             character_framedata.update(special_frame_obj)
             character_framedata.update(super_frame_obj)
             character_framedata.update(taunt_frame_obj)
-            print(json.dumps(character_framedata, indent=2))
+
+            if character == characters['chunli']:
+                character_framedata.update(serenity_frame_obj)
+            else:
+                pass
+
+            print(json.dumps(character_framedata, indent=3))
     
 async def fetch_character_data(character_name):
     url = f'https://wiki.supercombo.gg/w/Street_Fighter_6/{character_name}'
