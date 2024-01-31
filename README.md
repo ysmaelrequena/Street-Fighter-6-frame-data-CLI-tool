@@ -11,6 +11,8 @@ This CLI tool, in essence is a web scraper that takes the info that is on the mo
 and saves you the time of going to the website and then finding the character you want to explore, and then looking for the movement; instead, here you only 
 introduce the name of the character you want to see in the console, and the app will show you the frame data of said character in a readable format (json).
                                                                                                       
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 ##                                                                    How did I build it?
                                                     
@@ -22,12 +24,16 @@ everything as subdictionaries in a main dictionary called 'character_framedata' 
 
 For user convenience, I also used 'pyinstaller' to include an executable version of the program.
                                                                                                       
+
+                                                                                                      
                                                                                                       
                                                                                                                                                                                                            
 ##                                                                   Why did I build it?
                                                     
 I think ease of access to information can motivate players to learn more about the game, which in turn, will help them improve, I have no scientific evidence of this,
 but it has worked with me (due to my own laziness of navigating through the wiki).
+                                                                                                      
+
                                                                                                       
                                                                                                       
                                                                                                       
@@ -36,6 +42,9 @@ but it has worked with me (due to my own laziness of navigating through the wiki
                                                                                                                                                               
 - Run the script in your terminal, the program will ask you which character's data do you want to see
 - Write the character's name in the terminal and press enter, the program will fetch the data and show it to you.
+                                                                                                      
+
+                                                                                                      
                                                                                                       
                                                                                                       
 ##                                                                        Usage
@@ -66,6 +75,8 @@ but it has worked with me (due to my own laziness of navigating through the wiki
 Just input one of these names after the first prompt appears in the console and the scraper will do the rest for you.
 
 
+
+
 ##                                                                  Contributing 
 
 Clone the repo
@@ -77,17 +88,27 @@ cd web_scraper
 ```
 
 Run the project
-```
+
 You can either run the script with 'python main.py' or, you can go to the "dist" folder and use an executable
 version of the program.
-```
+
 
 Run the tests
 
-```
 For testing, you can import the 'unittest' framework, which, as the name suggests, can help you run unit tests on the code to ensure everything is going well,
-or you can use the 'pytest' library ('pip install pytest').
+or you can use the 'pytest' library.
+
 ```
+pip install pytest
+```
+
+or 
+
+```
+import unittest
+```
+
+
 
 ## Submit a pull request
 
