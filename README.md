@@ -62,10 +62,8 @@ https://github.com/ysmaelrequena/web_scraper_sf6
 cd web_scraper
 ```
 
-Run the project
 
-You can either run the script with 'python main.py' or, you can go to the "dist" folder and use an executable
-version of the program.
+
 
 
 The following are modules/libraries you have to have installed through pip or direct downloads in your system:
@@ -84,6 +82,19 @@ The following are modules/libraries you have to have installed through pip or di
   ```
   pip install asyncio
   ```
+
+
+
+
+Run the project
+
+You can either run the script with 'python main.py' or, you can go to the "dist" folder and use an executable
+version of the program.
+
+
+
+
+
 
                                                                                                                                                                                                                                                                                                            
                                                                                                                                                                                                                                                                                                            
