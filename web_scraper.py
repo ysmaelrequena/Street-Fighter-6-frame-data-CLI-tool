@@ -2,6 +2,10 @@ from bs4 import BeautifulSoup
 import requests
 import asyncio
 import json
+import os
+import subprocess
+import platform
+
 
 characters = {
     'aki': 'A.K.I',
@@ -100,9 +104,8 @@ group_size = 8
 
 character_framedata = {}
 
-
-
 async def character_scrape():
+    
 
     while True:
         
@@ -582,7 +585,7 @@ async def fetch_character_data(character_name):
 
 
 
-asyncio.run(character_scrape())
+
 
 
     
