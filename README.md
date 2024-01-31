@@ -45,7 +45,7 @@ but it has worked with me (due to my own laziness of navigating through the wiki
 
 
 
-- Python version used in the project: Python 3.12.0 or newer.
+- Python 3.12.0 or newer.
   
 
   The following are modules/libraries you have to have installed through pip or direct downloads in your system:
