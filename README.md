@@ -14,7 +14,7 @@ introduce the name of the character you want to see in the console, and the app 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 ##                                                                    How did I build it?
                                                     
-The app was built using Python and the 'BeautifulSoup' library mainly. The idea was to build something that wasn't extremely complicated and was useful, so in the
+The app was built using Python and the 'BeautifulSoup' library mainly. The idea was to build something that wasn't extremely complicated to use and was useful for players, so in the
 source code I first fetch the information contained in the Supercombo wiki with an async function called 'fetch_character_data()', then in the main function,
 I'm just looping through the divs that were fetched to be able to get the info; based on the move type, I'm storing the info in dictionaries that
 are initialized as global variables with empty dictionaries as their initial value, finally, after I've adquired all the info and I've stored it, I'm storing 
@@ -40,7 +40,7 @@ but it has worked with me (due to my own laziness of navigating through the wiki
                                                                                                       
 ##                                                                        Usage
 
-  Here's the list of currently available characters, as more get added to the game, I'll update the list:
+  Here's the list of currently available characters, as soon as characters get added to SF6, I'll update the list with the newcomers:
 
 - A.K.I
 - Blanka
