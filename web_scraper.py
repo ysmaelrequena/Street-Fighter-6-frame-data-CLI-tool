@@ -154,6 +154,10 @@ async def character_scrape():
             if character == characters['chunli']:
                 serenity_stream = soup.find('section', attrs={'id':'section-collapsible-4'}) 
                 throw_data = soup.find('section', attrs={'id':'section-collapsible-5'})
+                drv_sys = soup.find('section', attrs={'id':'section-collapsible-6'})
+                specials = soup.find('section', attrs={'id':'section-collapsible-7'})
+                supers = soup.find('section', attrs={'id':'section-collapsible-8'})
+                taunts = soup.find('section', attrs={'id':'section-collapsible-9'})
 
             else:
                 pass
