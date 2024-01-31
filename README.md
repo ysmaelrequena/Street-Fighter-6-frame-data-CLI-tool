@@ -2,7 +2,7 @@
                                                                                                                           
 This CLI tool, in essence is a web scraper that takes the info that is on the most commonly used wiki for competitive Street Fighter (https://wiki.supercombo.gg/),
 and saves you the time of going to the website and then finding the character you want to explore, and then looking for the movement; instead, here you only 
-introduce the name of the character you want to see in the console, and the app will show you the frame data of said character in a readable format.
+introduce the name of the character you want to see in the console, and the app will show you the frame data of said character in a readable format (json).
                                                                                                       
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
                                                     ----------- How did I build it? ----------
