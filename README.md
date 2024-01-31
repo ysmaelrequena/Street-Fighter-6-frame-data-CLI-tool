@@ -30,4 +30,30 @@ but it has worked with me (due to my own laziness of navigating through the wiki
 - Write the character's name in the terminal and press enter, the program will fetch the data and show it to you.
                                                                                                       
                                                                                                       
+                                                        ------------- Usage -------------
+
+  Available characters:
+
+- A.K.I
+- Blanka
+- Cammy
+- Chun-Li
+- Dee_Jay
+- Dhalsim
+- E.Honda
+- Guile
+- Jamie
+- JP
+- Juri
+- Ken
+- Kimberly
+- Lily
+- Luke
+- Manon
+- Marisa
+- Rashid
+- Ryu
+- Zangief
+  
+                                                                                                      
                                                                                                     
