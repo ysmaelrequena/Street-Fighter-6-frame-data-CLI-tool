@@ -1,3 +1,10 @@
+![Alt Text](https://github.com/ysmaelrequena/Street-Fighter-6-frame-data-CLI-tool/blob/main/sf6.jpg)
+                     
+                     
+                     
+                     
+                     
+                     
                      ----------- The premiere Street Fighter 6 Frame Data CLI Tool (Kind of a long title, isn't it?) ----------
                                                                                                                           
 This CLI tool, in essence is a web scraper that takes the info that is on the most commonly used wiki for competitive Street Fighter (https://wiki.supercombo.gg/),
