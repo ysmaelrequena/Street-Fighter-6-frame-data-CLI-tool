@@ -46,24 +46,6 @@ but it has worked with me (due to my own laziness of navigating through the wiki
 
 
 - Python 3.12.0 or newer.
-  
-
-  The following are modules/libraries you have to have installed through pip or direct downloads in your system:
-
-- 'Requests' module:
-  ```
-  $ python -m pip install requests
-  ```
-
-  - 'BeautifulSoup4' library:
-  ```
-  pip install beautifulsoup4
-  ```
-
-  - 'asyncio' module:
-  ```
-  pip install asyncio
-  ```
                                                                                                       
                                                                                                       
                                                                                                       
@@ -84,6 +66,24 @@ Run the project
 
 You can either run the script with 'python main.py' or, you can go to the "dist" folder and use an executable
 version of the program.
+
+
+The following are modules/libraries you have to have installed through pip or direct downloads in your system:
+
+- 'Requests' module:
+  ```
+  $ python -m pip install requests
+  ```
+
+  - 'BeautifulSoup4' library:
+  ```
+  pip install beautifulsoup4
+  ```
+
+  - 'asyncio' module:
+  ```
+  pip install asyncio
+  ```
 
                                                                                                                                                                                                                                                                                                            
                                                                                                                                                                                                                                                                                                            
