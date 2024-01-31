@@ -12,6 +12,8 @@ source code I first fetch the information contained in the Supercombo wiki with 
 I'm just looping through the divs that were fetched to be able to get the info; based on the move type, I'm storing the info in dictionaries that
 are initialized as global variables with empty dictionaries as their initial value, finally, after I've adquired all the info and I've stored it, I'm storing 
 everything as subdictionaries in a main dictionary called 'character_framedata' and then I'm printing the dictionary as a json to the console.
+
+For user convenience, I also used 'pyinstaller' to include an executable version of the program.
                                                                                                       
                                                                                                       
                                                                                                       
@@ -32,7 +34,7 @@ but it has worked with me (due to my own laziness of navigating through the wiki
                                                                                                       
                                                         ------------- Usage -------------
 
-  Available characters:
+  Here's the list of currently available characters, as more get added to the game, I'll update the list:
 
 - A.K.I
 - Blanka
@@ -54,6 +56,34 @@ but it has worked with me (due to my own laziness of navigating through the wiki
 - Rashid
 - Ryu
 - Zangief
-  
+
+Just input one of these names after the first prompt appears in the console and the scraper will do the rest for you.
+
+
+                                               --------------- Contributing ----------------
+Clone the repo
+
+```bash
+git clone
+https://github.com/ysmaelrequena/web_scraper_sf6
+cd web_scraper
+```
+
+### Run the project
+```
+You can either run the script with 'python main.py' or, you can go to the "dist" folder and use an executable
+version of the program.
+```
+
+### Run the tests
+
+```
+For testing, you can import the 'unittest' framework, which, as the name suggests, can help you run unit tests on the code to ensure everything is going well,
+or you can use the 'pytest' library ('pip install pytest').
+```
+
+## Submit a pull request
+
+If you'd like to contribute, please fork the repository and open a pull request to the `main` branch.
                                                                                                       
                                                                                                     
