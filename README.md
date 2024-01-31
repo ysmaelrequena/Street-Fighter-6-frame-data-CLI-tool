@@ -6,6 +6,8 @@
                      
                      
 ##                                       The premiere Street Fighter 6 Frame Data CLI Tool (Kind of a long title, isn't it?)
+
+
                                                                                                                           
 This CLI tool, in essence is a web scraper that takes the info that is on the most commonly used wiki for competitive Street Fighter (https://wiki.supercombo.gg/),
 and saves you the time of going to the website and then finding the character you want to explore, and then looking for the movement; instead, here you only 
@@ -15,6 +17,8 @@ introduce the name of the character you want to see in the console, and the app 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 ##                                                                    How did I build it?
+
+
                                                     
 The app was built using Python and the 'BeautifulSoup' library mainly. The idea was to build something that wasn't extremely complicated to use and was useful for players, so in the
 source code I first fetch the information contained in the Supercombo wiki with an async function called 'fetch_character_data()', then in the main function,
@@ -29,25 +33,64 @@ For user convenience, I also used 'pyinstaller' to include an executable version
                                                                                                       
                                                                                                                                                                                                            
 ##                                                                   Why did I build it?
+
+
                                                     
 I think ease of access to information can motivate players to learn more about the game, which in turn, will help them improve, I have no scientific evidence of this,
 but it has worked with me (due to my own laziness of navigating through the wiki).
-                                                                                                      
 
+
+
+##                                                                      Requirements
+
+
+
+- Python version used in the project: Python 3.12.0 or newer.
+  
+
+  The following are modules/libraries you have to have installed through pip or direct downloads in your system:
+
+- 'Requests' module:
+  ```
+  $ python -m pip install requests
+  ```
+
+  - 'BeautifulSoup4' library:
+  ```
+  pip install beautifulsoup4
+  ```
+
+  - 'asyncio' module:
+  ```
+  pip install asyncio
+  ```
                                                                                                       
                                                                                                       
                                                                                                       
 ##                                                                      Quick Start
+
+
                                                         
                                                                                                                                                               
-- Run the script in your terminal, the program will ask you which character's data do you want to see
-- Write the character's name in the terminal and press enter, the program will fetch the data and show it to you.
-                                                                                                      
+Clone the repo
 
-                                                                                                      
-                                                                                                      
+```bash
+git clone
+https://github.com/ysmaelrequena/web_scraper_sf6
+cd web_scraper
+```
+
+Run the project
+
+You can either run the script with 'python main.py' or, you can go to the "dist" folder and use an executable
+version of the program.
+
+                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                           
                                                                                                       
 ##                                                                        Usage
+
+
 
   Here's the list of currently available characters, as soon as characters get added to SF6, I'll update the list with the newcomers:
 
@@ -79,20 +122,6 @@ Just input one of these names after the first prompt appears in the console and 
 
 ##                                                                  Contributing 
 
-Clone the repo
-
-```bash
-git clone
-https://github.com/ysmaelrequena/web_scraper_sf6
-cd web_scraper
-```
-
-Run the project
-
-You can either run the script with 'python main.py' or, you can go to the "dist" folder and use an executable
-version of the program.
-
-
 Run the tests
 
 For testing, you can import the 'unittest' framework, which, as the name suggests, can help you run unit tests on the code to ensure everything is going well,
@@ -107,8 +136,6 @@ or
 ```
 import unittest
 ```
-
-
 
 ## Submit a pull request
 
