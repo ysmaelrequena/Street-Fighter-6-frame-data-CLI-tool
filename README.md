@@ -111,6 +111,7 @@ version of the program.
 - Chun-Li
 - Dee_Jay
 - Dhalsim
+- Ed
 - E.Honda
 - Guile
 - Jamie
